@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,8 +21,9 @@ public class Knight : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        health = maxHealth;
+        health = PlayerPrefs.GetFloat("PHealth", maxHealth);
         isDead = false;
+        
     }
 
     private void FixedUpdate()
@@ -75,6 +77,9 @@ public class Knight : MonoBehaviour
         {
             isDead = false;
             animator.SetTrigger("TakeDamage");
+            
         }
+        PlayerPrefs.SetFloat("PHealth", health);
     }
+
 }
