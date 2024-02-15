@@ -5,10 +5,17 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    public Knight knight;
     public Slider slider;
 
-    public void TakeDamage(float damage)
+    private void Start()
     {
-        slider.value -= damage;
+        knight = GetComponent<Knight>();
     }
+
+    public void Update()
+    {
+        slider.value = knight.health;
+    }
+
 }
