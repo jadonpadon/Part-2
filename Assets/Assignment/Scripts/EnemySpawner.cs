@@ -13,21 +13,19 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
+         if (timer >= spawnRate)
+            {
+                float spawnX = Random.Range(-10, 10);
+                float spawnY = Random.Range(-10, 10);
+                Instantiate(enemy, new Vector3(spawnX, spawnY, 0), transform.rotation);
 
-        if (timer >= spawnRate)
-        {
-            float spawnX = Random.Range(-10, 10);
-            float spawnY = Random.Range(-10, 10);
-            Instantiate(enemy, new Vector3(spawnX, spawnY, 0), transform.rotation);
-
-            timer = 0;
+                timer = 0;
         }
     }
 }
