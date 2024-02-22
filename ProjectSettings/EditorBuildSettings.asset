@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Week 6/Scenes/Scene B.unity
     guid: 63c3d56b4b615f44bab6cd646e5acc23
+  - enabled: 1
+    path: Assets/Assignment/Scenes/Main Screen.unity
+    guid: 44087d1063b8a4543a19735fa1383789
+  - enabled: 1
+    path: Assets/Assignment/Scenes/Start Screen.unity
+    guid: 04ba118875d821b47bf7c3d237c1e7d7
   m_configObjects: {}
