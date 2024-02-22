@@ -12,6 +12,9 @@ public class Shooter : MonoBehaviour
     public float maxHealth = 5;
     public GameObject bullet;
     public Transform spawn;
+    bool died = false;
+    public Button respawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,7 @@ public class Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !died)
         {
             Instantiate(bullet, spawn.position, spawn.rotation);
 
@@ -31,12 +34,23 @@ public class Shooter : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x);
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
         }
+
+        respawn.interactable = died;
     }
 
     public void LoseHealth(float damage)
     {
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
-    }
+    
+        if(health <= 0)
+        {
+            died = true;
+        }
+        else
+        {
+            died = false;
+        }
 
+    }
 }
